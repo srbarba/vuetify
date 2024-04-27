@@ -53,71 +53,76 @@ export const VTimePickerControls = genericComponent()({
           <div
             class={{
               'v-time-picker-controls__time': true,
+              'v-time-picker-hide-controls': props.hideHeader,
               'v-time-picker-controls__time--with-seconds': props.useSeconds,
             }}
           >
-            <VBtn
-              active={ props.selecting === 1 }
-              color={ props.selecting === 1 ? props.color : undefined }
-              variant="tonal"
-              class={{
-                'v-time-picker-controls__time__btn': true,
-                'v-time-picker-controls__time--with-ampm__btn': props.ampm,
-                'v-time-picker-controls__time--with-seconds__btn': props.useSeconds,
-              }}
-              text={ props.hour == null ? '--' : pad(`${hour}`) }
-              onClick={ () => emit('update:selecting', SelectingTimes.Hour) }
-            />
-
-            <span
-              class={[
-                'v-time-picker-controls__time__separator',
-                { 'v-time-picker-controls--with-seconds__time__separator': props.useSeconds },
-              ]}
-            >:</span>
-
-            <VBtn
-              active={ props.selecting === 2 }
-              color={ props.selecting === 2 ? props.color : undefined }
-              class={{
-                'v-time-picker-controls__time__btn': true,
-                'v-time-picker-controls__time__btn__active': props.selecting === 2,
-                'v-time-picker-controls__time--with-ampm__btn': props.ampm,
-                'v-time-picker-controls__time--with-seconds__btn': props.useSeconds,
-              }}
-              variant="tonal"
-              text={ props.minute == null ? '--' : pad(props.minute) }
-              onClick={ () => emit('update:selecting', SelectingTimes.Minute) }
-            />
-
             {
-              props.useSeconds && (
-                <span
-                  class={[
-                    'v-time-picker-controls__time__separator',
-                    { 'v-time-picker-controls--with-seconds__time__separator': props.useSeconds },
-                  ]}
-                  key="secondsDivider"
-                >:</span>
-              )
-            }
+              !props.hideHeader && (
+                <div key="timePickerTimeBtns">
+                  <VBtn
+                    active={ props.selecting === 1 }
+                    color={ props.selecting === 1 ? props.color : undefined }
+                    variant="tonal"
+                    class={{
+                      'v-time-picker-controls__time__btn': true,
+                      'v-time-picker-controls__time--with-ampm__btn': props.ampm,
+                      'v-time-picker-controls__time--with-seconds__btn': props.useSeconds,
+                    }}
+                    text={ props.hour == null ? '--' : pad(`${hour}`) }
+                    onClick={ () => emit('update:selecting', SelectingTimes.Hour) }
+                  />
 
-            {
-              props.useSeconds && (
-                <VBtn
-                  key="secondsVal"
-                  variant="tonal"
-                  onClick={ () => emit('update:selecting', SelectingTimes.Second) }
-                  class={{
-                    'v-time-picker-controls__time__btn': true,
-                    'v-time-picker-controls__time__btn__active': props.selecting === 3,
-                    'v-time-picker-controls__time--with-seconds__btn': props.useSeconds,
-                  }}
-                  text={ props.second == null ? '--' : pad(props.second) }
-                />
-              )
-            }
+                  <span
+                    class={[
+                      'v-time-picker-controls__time__separator',
+                      { 'v-time-picker-controls--with-seconds__time__separator': props.useSeconds },
+                    ]}
+                  >:</span>
 
+                  <VBtn
+                    active={ props.selecting === 2 }
+                    color={ props.selecting === 2 ? props.color : undefined }
+                    class={{
+                      'v-time-picker-controls__time__btn': true,
+                      'v-time-picker-controls__time__btn__active': props.selecting === 2,
+                      'v-time-picker-controls__time--with-ampm__btn': props.ampm,
+                      'v-time-picker-controls__time--with-seconds__btn': props.useSeconds,
+                    }}
+                    variant="tonal"
+                    text={ props.minute == null ? '--' : pad(props.minute) }
+                    onClick={ () => emit('update:selecting', SelectingTimes.Minute) }
+                  />
+
+                  {
+                    props.useSeconds && (
+                      <span
+                        class={[
+                          'v-time-picker-controls__time__separator',
+                          { 'v-time-picker-controls--with-seconds__time__separator': props.useSeconds },
+                        ]}
+                        key="secondsDivider"
+                      >:</span>
+                    )
+                  }
+
+                  {
+                    props.useSeconds && (
+                      <VBtn
+                        key="secondsVal"
+                        variant="tonal"
+                        onClick={ () => emit('update:selecting', SelectingTimes.Second) }
+                        class={{
+                          'v-time-picker-controls__time__btn': true,
+                          'v-time-picker-controls__time__btn__active': props.selecting === 3,
+                          'v-time-picker-controls__time--with-seconds__btn': props.useSeconds,
+                        }}
+                        text={ props.second == null ? '--' : pad(props.second) }
+                      />
+                    )
+                  }
+                </div>
+              )}
             {
               props.ampm && (
                 <div

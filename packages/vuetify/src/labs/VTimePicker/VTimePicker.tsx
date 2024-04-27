@@ -295,6 +295,7 @@ export const VTimePicker = genericComponent<VTimePickerSlots>()({
       return (
         <VPicker
           { ...pickerProps }
+          hide-header={ undefined }
           color={ undefined }
           class={[
             'v-time-picker',
@@ -302,11 +303,11 @@ export const VTimePicker = genericComponent<VTimePickerSlots>()({
           ]}
           style={ props.style }
           v-slots={{
-            title: () => slots.title?.() ?? (
+            title: () => slots.title?.() ?? (!props.hideHeader && (
               <div class="v-time-picker__title">
                 { t(props.title) }
               </div>
-            ),
+            )) ?? undefined,
             header: () => (
               <VTimePickerControls
                 { ...timePickerControlsProps }
