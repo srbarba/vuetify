@@ -333,13 +333,13 @@ function format (
       options = { second: 'numeric' }
       break
     case 'fullTime':
-      options = { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true }
+      options = { hour: 'numeric', minute: 'numeric', hour12: true }
       break
     case 'fullTime12h':
-      options = { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true }
+      options = { hour: 'numeric', minute: 'numeric', hour12: true }
       break
     case 'fullTime24h':
-      options = { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false }
+      options = { hour: 'numeric', minute: 'numeric', hour12: false }
       break
     case 'fullDateTime':
       options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true }
