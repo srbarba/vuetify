@@ -142,6 +142,10 @@ Using the the **label**, and an **append** slots we are able to create an intuit
 
 <ExamplesExample file="v-treeview/slot-append-and-label" />
 
+Using the the **append**, and an **prepend** slots we are able to move item in tree.
+
+<ExamplesExample file="v-treeview/slot-append-and-prepend-item" />
+
 ### Misc
 
 #### Search and filter
