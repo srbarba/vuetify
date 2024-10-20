@@ -4,8 +4,12 @@ import { convertToUnit, destructComputed, getCurrentInstanceName, includes, prop
 // Types
 const predefinedSizes = ['x-small', 'small', 'default', 'large', 'x-large']
 
+type PredefinedSizes = typeof predefinedSizes[number]
+type SizeAbsoluteUnits = 'px' | 'pt' | 'cm' | 'mm' | 'in' | 'pc' | 'Q'
+type SizeRelativeUnits = 'em' | 'ex' | 'ch' | 'rem' | 'lh' | 'vw' | 'vh' | 'vmin' | 'vmax'
+type SizeUnits = SizeAbsoluteUnits | SizeRelativeUnits | '%' | ''
 export interface SizeProps {
-  size?: string | number
+  size?:  number | `${number}${SizeUnits}` | PredefinedSizes
 }
 
 // Composables
